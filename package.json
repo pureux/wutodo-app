@@ -1,0 +1,38 @@
+{
+  "name": "wutodo-app",
+  "version": "1.0.0",
+  "description": "Wutodo App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pureux/wutodo-app.git"
+  },
+  "keywords": [
+    "wutodo"
+  ],
+  "author": "Tim Franklin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pureux/wutodo-app/issues"
+  },
+  "homepage": "https://github.com/pureux/wutodo-app#readme",
+  "dependencies": {
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.9.1",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.5.0",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^2.3.1",
+    "gulp-uglify": "^1.5.3",
+    "gulp-watch": "^4.3.6",
+    "webpack": "^1.13.1",
+    "webpack-stream": "^3.2.0"
+  }
+}

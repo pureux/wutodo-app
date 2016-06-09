@@ -1,0 +1,16 @@
+@import 'base';
+
+body {
+  background-color: $backgroundColor;
+  color: $textColor;
+  font-family: $baseFontFamily;
+}
+
+h1 {
+  color: $headingColor;
+}
+
+h2 {
+  color: $headingColor;
+  font-weight: normal;
+}
