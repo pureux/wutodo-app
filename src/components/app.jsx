@@ -8,12 +8,12 @@ import Footer from './footer.jsx';
 export default class App extends React.Component {
   render() {
     return (
-      <div>
-        <Header />
-        <article>
+      <div id="app">
+        <Header key="header" />
+        <main>
           <p>Lorem ipsum dolor sit amet.</p>
-        </article>
-        <Footer />
+        </main>
+        <Footer key="footer" />
       </div>
     );
   }

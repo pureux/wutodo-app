@@ -3,10 +3,8 @@
 $color-black: #000000;
 $color-white: #ffffff;
 
-$backgroundColor: $color-primary-4;
-$textColor: $color-primary-1;
-$headingColor: $color-primary-0;
-$subheadingColor: $color-secondary-1-0;
+$rgba-black: rgba(  0,  0,  0,1);
+$rgba-white: rgba(255,255,255,1);
 
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
-$baseFontFamily: 'Open Sans', Arial, Helvetica, sans-serif;
+$font-primary: 'Open Sans', Arial, Helvetica, sans-serif;
