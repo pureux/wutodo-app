@@ -3,13 +3,17 @@
 import React from 'react';
 
 import Header from './header.jsx';
+import Footer from './footer.jsx';
 
 export default class App extends React.Component {
   render() {
     return (
       <div>
         <Header />
-        <p>Lorem ipsum dolor sit amet.</p>
+        <article>
+          <p>Lorem ipsum dolor sit amet.</p>
+        </article>
+        <Footer />
       </div>
     );
   }

@@ -1,4 +1,3 @@
-/* global __dirname */
 'use strict';
 let path = require('path');
 let gulp = require('gulp');
@@ -9,15 +8,15 @@ var watch = require('gulp-watch');
 
 // Sass
 gulp.task('sass', function() {
-    gulp.src('src/**/*.scss')
-        .pipe(sass({outputStyle: 'compressed'}))
-        .pipe(gulp.dest('dist'));
+  gulp.src('src/**/*.scss')
+    .pipe(sass({outputStyle: 'compressed'}))
+    .pipe(gulp.dest('dist'));
 });
 
 // Frontend
 gulp.task('frontend', ['sass'], function() {
   gulp.watch('src/**/*.scss', ['sass']);
-	gulp.watch(['src/**/*.js*'], function(){
+	gulp.watch(['src/**/*.js*'], function() {
 		gulp.src('src/**/*.js')
 			.pipe(webpack({
 				module:{
