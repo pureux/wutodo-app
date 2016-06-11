@@ -18,10 +18,6 @@ export default class App extends React.Component {
       <MuiThemeProvider muiTheme={darkMuiTheme}>
         <div id="app">
           <Header key="header" />
-          <nav>
-            <NavLink to="/" onlyActiveOnIndex={true}>Users</NavLink>
-            <NavLink to="/admin">Admin</NavLink>
-          </nav>
           <main>
             {this.props.children}
           </main>

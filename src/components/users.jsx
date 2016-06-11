@@ -3,9 +3,15 @@
 import React from 'react';
 import { Link } from 'react-router';
 
+import Avatar from 'material-ui/Avatar';
+import { List, ListItem } from 'material-ui/List';
+import { lime500, blueGrey500 } from 'material-ui/styles/colors';
+import Person from 'material-ui/svg-icons/social/person';
+
 class Users extends React.Component {
   constructor(props) {
     super(props);
+
     this.data = [
       {
         userName: 'emma',
@@ -19,28 +25,24 @@ class Users extends React.Component {
       }
     ];
   }
-  
-  handleUserClick(event) {
-    const path = '/';
-    this.context.router.push(path);
-  }
 
   renderUsers() {
-    const items = [];
-    this.data.forEach((user) => {
-      items.push(
-        <li key={user.userName}>
-          <Link to={'/lists/' + user.userName}>
-            {user.firstName} {user.lastName}
-          </Link>
-        </li>
+    const items = this.data.map((user) => {
+      const path = '/lists/' + user.userName;
+      return (
+        <ListItem 
+          key={user.userName}
+          primaryText={user.firstName + ' ' + user.lastName}
+          containerElement={<Link to={path} />}
+          leftAvatar={<Avatar icon={<Person />} backgroundColor={blueGrey500} color={lime500} />}
+        />
       );
     });
 
     return (
-      <ul>
+      <List>
         {items}
-      </ul>
+      </List>
     );
   }
   
@@ -55,5 +57,9 @@ class Users extends React.Component {
     );
   }
 }
+
+Users.contextTypes = {
+  router: React.PropTypes.object
+};
 
 export default Users;

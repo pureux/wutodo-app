@@ -1,14 +1,26 @@
 'use strict';
 
 import React from 'react';
+import { Link } from 'react-router';
+
+import RaisedButton from 'material-ui/RaisedButton';
+import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
 
 export default class Header extends React.Component {
   render() {
     return (
-      <header>
-        <h1>Heading</h1>
-        <h2>Subheading</h2>
-      </header>
+      <Toolbar>
+        <ToolbarGroup firstChild={true}>
+          <ToolbarTitle text="Wutodo" />
+        </ToolbarGroup>
+        <ToolbarGroup>
+          <ToolbarSeparator />
+          <RaisedButton
+            containerElement={<Link to="/admin" />}
+            label="Admin"
+            primary={true} />
+        </ToolbarGroup>
+      </Toolbar>
     );
   }
 }

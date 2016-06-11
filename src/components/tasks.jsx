@@ -4,10 +4,14 @@ import React from 'react';
 import { Link } from 'react-router';
 
 import Checkbox from 'material-ui/Checkbox';
+import FlatButton from 'material-ui/FlatButton';
+import AssignmentReturn from 'material-ui/svg-icons/action/assignment-return';
+import { List, ListItem } from 'material-ui/List';
 
 class Tasks extends React.Component {
   constructor(props) {
     super(props);
+
     this.data = [
       {
         name: 'Get dressed',
@@ -37,28 +41,36 @@ class Tasks extends React.Component {
   }
 
   renderTasks() {
-    const items = [];
-    this.data.forEach((task) => {
-      items.push(
-          <Checkbox
-            key={task.name}
-            label={task.name}
-            defaultChecked={task.completed}
-          />
+    const items = this.data.map((task) => {
+      return (
+        <ListItem
+          key={task.name}
+          primaryText={task.name}
+          leftCheckbox={<Checkbox defaultChecked={task.completed} />}
+        />
       );
     });
 
-    return items;
+    return (
+      <List>
+        {items}
+      </List>
+    );
   }
 
   render() {
     const content = this.renderTasks();
+    
     return (
       <div>
         <h1>{this.props.params.tasksSlug} for {this.props.params.userName}</h1>
-        <h2>Tasks</h2>
         {content}
-        <Link to={'lists/' + this.props.params.userName}>Return to lists</Link>
+        <FlatButton
+          containerElement={<Link to={'lists/' + this.props.params.userName} />}
+          icon={<AssignmentReturn />}
+          label="Lists"
+          linkButton={true}
+        />
       </div>
     );
   }
