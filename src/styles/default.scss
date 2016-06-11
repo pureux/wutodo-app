@@ -21,6 +21,34 @@ header {
   padding: 0.5rem;
 }
 
+a {
+  color: $color-secondary-1-2;
+  text-decoration: none;
+
+  &:hover, &:focus {
+    color: $color-secondary-1-1;
+    text-decoration: none;
+  }
+}
+
+nav {
+  background: $color-secondary-2-3;
+  display: flex;
+  padding: 0.2rem;
+
+  a {
+    //background: $color-secondary-2-0;
+    color: $color-secondary-2-1;
+    flex: 1;
+    padding: 0.2rem;
+    text-align: center;
+
+    &.active {
+      color: $color-white;
+    }
+  }
+}
+
 main {
   flex: 1;
   padding: 0.5rem;
