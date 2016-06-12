@@ -3,8 +3,8 @@
 import React from 'react';
 import { Link } from 'react-router';
 
+import FloatingActionButton from 'material-ui/FloatingActionButton';
 import Home from 'material-ui/svg-icons/action/home';
-import RaisedButton from 'material-ui/RaisedButton';
 
 class Footer extends React.Component {
   constructor(props) {
@@ -12,14 +12,21 @@ class Footer extends React.Component {
   }
 
   render() {
+    const { pathname } = this.props.location;
+    const buttonStyle = { display: (pathname === '/' ? 'none' : 'block') };
     return (
       <footer>
         <small>Wutodo</small>
-        <RaisedButton
+        <FloatingActionButton
+          className="floatingActionButton"
           containerElement={<Link to="/" />}
-          icon={<Home />}
-          primary={true}
-        />
+          linkButton={true}
+          mini={false}
+          secondary={true}
+          style={buttonStyle}
+        >
+          <Home />
+        </FloatingActionButton>
       </footer>
     );
   }

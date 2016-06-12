@@ -3,12 +3,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, hashHistory, IndexRoute } from 'react-router';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import Admin from './components/admin.jsx';
 import App from './components/app.jsx';
 import Lists from './components/lists.jsx';
 import Tasks from './components/tasks.jsx';
 import Users from './components/users.jsx';
+
+injectTapEventPlugin();
 
 ReactDOM.render(
   <Router history={hashHistory}>

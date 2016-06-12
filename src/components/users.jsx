@@ -3,10 +3,14 @@
 import React from 'react';
 import { Link } from 'react-router';
 
+import AppBar from 'material-ui/AppBar';
 import Avatar from 'material-ui/Avatar';
 import { List, ListItem } from 'material-ui/List';
-import { lime500, blueGrey500 } from 'material-ui/styles/colors';
+import People from 'material-ui/svg-icons/social/people';
 import Person from 'material-ui/svg-icons/social/person';
+import Subheader from 'material-ui/Subheader';
+
+// import Header from './header.jsx';
 
 class Users extends React.Component {
   constructor(props) {
@@ -34,13 +38,14 @@ class Users extends React.Component {
           key={user.userName}
           primaryText={user.firstName + ' ' + user.lastName}
           containerElement={<Link to={path} />}
-          leftAvatar={<Avatar icon={<Person />} backgroundColor={blueGrey500} color={lime500} />}
+          leftAvatar={<Avatar icon={<Person />} />}
         />
       );
     });
 
     return (
       <List>
+        <Subheader inset={true}>Select a person</Subheader>
         {items}
       </List>
     );
@@ -48,10 +53,11 @@ class Users extends React.Component {
   
   render() {
     const content = this.renderUsers();
+    // <Header title="Home" />
 
     return (
       <div>
-        <h1>Users</h1>
+        <AppBar showMenuIconButton={false} title="Wutodo" />
         {content}
       </div>
     );

@@ -3,10 +3,17 @@
 import React from 'react';
 import { Link } from 'react-router';
 
+import AppBar from 'material-ui/AppBar';
+import ArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
+import Avatar from 'material-ui/Avatar';
+import Assignment from 'material-ui/svg-icons/action/assignment';
 import Checkbox from 'material-ui/Checkbox';
 import FlatButton from 'material-ui/FlatButton';
-import AssignmentReturn from 'material-ui/svg-icons/action/assignment-return';
+import IconButton from 'material-ui/IconButton';
 import { List, ListItem } from 'material-ui/List';
+import NavigateBefore from 'material-ui/svg-icons/image/navigate-before';
+import Subheader from 'material-ui/Subheader';
+import muiThemeable from 'material-ui/styles/muiThemeable';
 
 class Tasks extends React.Component {
   constructor(props) {
@@ -53,6 +60,7 @@ class Tasks extends React.Component {
 
     return (
       <List>
+        <Subheader inset={true}>Complete the tasks from {this.props.params.tasksSlug}</Subheader>
         {items}
       </List>
     );
@@ -60,20 +68,32 @@ class Tasks extends React.Component {
 
   render() {
     const content = this.renderTasks();
+    const { palette } = this.props.muiTheme;
     
     return (
       <div>
-        <h1>{this.props.params.tasksSlug} for {this.props.params.userName}</h1>
-        {content}
-        <FlatButton
-          containerElement={<Link to={'lists/' + this.props.params.userName} />}
-          icon={<AssignmentReturn />}
-          label="Lists"
-          linkButton={true}
+        <AppBar
+          title="Tasks"
+          iconElementLeft={
+            <IconButton containerElement={<Link to={'lists/' + this.props.params.userName} />}>
+              <ArrowBack />
+            </IconButton>
+          }
+          iconElementRight={
+            <Avatar
+              style={{backgroundColor: palette.primary1Color, marginTop: "4px"}}
+              icon={<Assignment style={{fill: palette.primary2Color}} />}
+            />
+          }
         />
+        {content}
       </div>
     );
   }
 }
 
-export default Tasks;
+Tasks.propTypes = {
+  muiTheme: React.PropTypes.object.isRequired
+};
+
+export default muiThemeable()(Tasks);
