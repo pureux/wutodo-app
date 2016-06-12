@@ -22,6 +22,7 @@ class Tasks extends React.Component {
     this.data = [
       {
         name: 'Get dressed',
+        description: 'Check the weather',
         completed: true
       },
       {
@@ -34,14 +35,27 @@ class Tasks extends React.Component {
       },
       {
         name: 'Pack your backpack',
+        description: 'Homework? Permission slip?',
         completed: false
       },
       {
-        name: 'Put shoes on',
+        name: 'Pack your lunch',
+        description: 'Or eat school lunch',
+        completed: false
+      },
+      {
+        name: 'Close doors',
+        description: 'And turn off lights',
         completed: false
       },
       {
         name: 'Feed the dogs',
+        description: 'One scoop in each bowl',
+        completed: false
+      },
+      {
+        name: 'Put shoes on',
+        description: 'Gym today?',
         completed: false
       }
     ];
@@ -53,6 +67,7 @@ class Tasks extends React.Component {
         <ListItem
           key={task.name}
           primaryText={task.name}
+          secondaryText={task.description}
           leftCheckbox={<Checkbox defaultChecked={task.completed} />}
         />
       );
@@ -60,7 +75,7 @@ class Tasks extends React.Component {
 
     return (
       <List>
-        <Subheader inset={true}>Complete the tasks from {this.props.params.tasksSlug}</Subheader>
+        <Subheader inset={true}>Complete the tasks</Subheader>
         {items}
       </List>
     );
@@ -87,6 +102,7 @@ class Tasks extends React.Component {
           }
         />
         {content}
+        <small>{this.props.params.tasksSlug}</small>
       </div>
     );
   }

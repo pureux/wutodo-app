@@ -22,14 +22,14 @@ class Lists extends React.Component {
 
     this.data = [
       {
-        slug: 'bedtime-routine',
-        name: 'Bedtime Routine',
-        description: 'To do every night'
+        slug: 'morning-routine',
+        name: 'Morning Routine for School',
+        description: 'To do every morning'
       },
       {
-        slug: 'morning-routine',
-        name: 'Morning Routine',
-        description: 'To do every morning'
+        slug: 'bedtime-routine',
+        name: 'Bedtime Routine on School Nights',
+        description: 'To do every night'
       },
       {
         slug: 'weekly-chores',
@@ -46,6 +46,7 @@ class Lists extends React.Component {
         <ListItem
           key={list.slug}
           primaryText={list.name}
+          secondaryText={list.description}
           containerElement={<Link to={path} />}
           leftAvatar={<Avatar icon={<Assignment />} />}
         />
@@ -54,8 +55,9 @@ class Lists extends React.Component {
 
     return (
       <List>
-        <Subheader inset={true}>Select a list for {this.props.params.userName}</Subheader>
+        <Subheader inset={true}>Select a list</Subheader>
         {items}
+        <small>{this.props.params.userName}</small>
       </List>
     );
   }
