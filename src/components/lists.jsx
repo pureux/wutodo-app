@@ -23,12 +23,12 @@ class Lists extends React.Component {
     this.data = [
       {
         slug: 'morning-routine',
-        name: 'Morning Routine for School',
+        name: 'Morning Routine',
         description: 'To do every morning'
       },
       {
         slug: 'bedtime-routine',
-        name: 'Bedtime Routine on School Nights',
+        name: 'Bedtime Routine',
         description: 'To do every night'
       },
       {
@@ -57,7 +57,6 @@ class Lists extends React.Component {
       <List>
         <Subheader inset={true}>Select a list</Subheader>
         {items}
-        <small>{this.props.params.userName}</small>
       </List>
     );
   }
@@ -65,10 +64,12 @@ class Lists extends React.Component {
   render() {
     const content = this.renderLists();
     const { palette } = this.props.muiTheme;
+    const subtitle = '/' + this.props.params.userName;
     return (
       <div>
         <AppBar
-          title="Lists"
+          className="appBar"
+          title={<span>Lists<small className="subtitle">{subtitle}</small></span>}
           iconElementLeft={
             <IconButton containerElement={<Link to="/" />}>
               <ArrowBack />
@@ -76,7 +77,8 @@ class Lists extends React.Component {
           }
           iconElementRight={
             <Avatar
-              style={{backgroundColor: palette.primary1Color, marginTop: "4px"}}
+              className="avatar"
+              style={{backgroundColor: palette.primary1Color}}
               icon={<Person style={{fill: palette.primary2Color}} />}
             />
           }

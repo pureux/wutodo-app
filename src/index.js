@@ -18,7 +18,7 @@ ReactDOM.render(
     <Route path="/" component={App}>
       <IndexRoute component={Users} />
       <Route path="/lists/:userName" component={Lists} />
-      <Route path="/tasks/:userName/:tasksSlug" component={Tasks} />
+      <Route path="/tasks/:userName/:listSlug" component={Tasks} />
       <Route path="/admin" component={Admin} />
     </Route>
   </Router>,

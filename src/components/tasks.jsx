@@ -84,11 +84,13 @@ class Tasks extends React.Component {
   render() {
     const content = this.renderTasks();
     const { palette } = this.props.muiTheme;
+    const subtitle = '/' + this.props.params.userName + '/' + this.props.params.listSlug;
     
     return (
       <div>
         <AppBar
-          title="Tasks"
+          className="appBar"
+          title={<span>Tasks<small className="subtitle">{subtitle}</small></span>}
           iconElementLeft={
             <IconButton containerElement={<Link to={'lists/' + this.props.params.userName} />}>
               <ArrowBack />
@@ -96,13 +98,13 @@ class Tasks extends React.Component {
           }
           iconElementRight={
             <Avatar
-              style={{backgroundColor: palette.primary1Color, marginTop: "4px"}}
+              className="avatar"
+              style={{backgroundColor: palette.primary1Color}}
               icon={<Assignment style={{fill: palette.primary2Color}} />}
             />
           }
         />
         {content}
-        <small>{this.props.params.tasksSlug}</small>
       </div>
     );
   }

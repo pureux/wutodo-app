@@ -19,6 +19,21 @@ main {
   flex: 1;
 }
 
+.appBar {
+  .subtitle {
+    display: block;
+    color: $primary-color;
+    line-height: 1;
+    font-weight: 400;
+    margin-top: -1rem;
+    font-size: 0.8rem;
+  }
+
+  .avatar {
+    margin-top: 4px;
+  }
+}
+
 footer {
   color: $primary-color-light;
   padding: 0.5rem;
