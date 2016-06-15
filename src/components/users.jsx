@@ -9,53 +9,27 @@ import { List, ListItem } from 'material-ui/List';
 import People from 'material-ui/svg-icons/social/people';
 import Person from 'material-ui/svg-icons/social/person';
 import Subheader from 'material-ui/Subheader';
-import muiThemeable from 'material-ui/styles/muiThemeable';
-
-// import Header from './header.jsx';
+import muiThemeable from 'material-ui/styles/muiThemeable'
 
 class Users extends React.Component {
   constructor(props) {
     super(props);
-
-    this.data = [
-      {
-        userName: 'emma',
-        firstName: 'Emma',
-        lastName: 'Franklin'
-      },
-      {
-        userName: 'everett',
-        firstName: 'Everett',
-        lastName: 'Franklin'
-      }
-    ];
   }
 
-  renderUsers() {
-    const items = this.data.map((user) => {
-      const path = '/lists/' + user.userName;
-      return (
-        <ListItem 
-          key={user.userName}
-          primaryText={user.firstName + ' ' + user.lastName}
-          containerElement={<Link to={path} />}
-          leftAvatar={<Avatar icon={<Person />} />}
-        />
-      );
-    });
-
+  renderUser(user) {
+    const path = '/lists/' + user.userName;
     return (
-      <List>
-        <Subheader inset={true}>Select a person</Subheader>
-        {items}
-      </List>
+      <ListItem 
+        key={user.userName}
+        primaryText={user.firstName + ' ' + user.lastName}
+        containerElement={<Link to={path} />}
+        leftAvatar={<Avatar icon={<Person />} />}
+      />
     );
   }
   
   render() {
-    const content = this.renderUsers();
     const { palette } = this.props.muiTheme;
-    // <Header title="Home" />
 
     return (
       <div>
@@ -64,12 +38,15 @@ class Users extends React.Component {
           title="Wutodo"
           iconElementRight={
             <Avatar
-              style={{backgroundColor: palette.primary1Color, marginTop: "4px"}}
+              style={{backgroundColor: palette.primary1Color}}
               icon={<People style={{fill: palette.primary2Color}} />}
             />
           }
         />
-        {content}
+        <List>
+          <Subheader inset={true}>Select a person</Subheader>
+          {this.props.users.map(this.renderUser)}
+        </List>
       </div>
     );
   }
@@ -80,7 +57,8 @@ Users.contextTypes = {
 };
 
 Users.propTypes = {
-  muiTheme: React.PropTypes.object.isRequired
+  muiTheme: React.PropTypes.object.isRequired,
+  users: React.PropTypes.array.isRequired
 };
 
 export default muiThemeable()(Users);

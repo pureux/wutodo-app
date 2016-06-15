@@ -9,14 +9,14 @@ import Admin from './components/admin.jsx';
 import App from './components/app.jsx';
 import Lists from './components/lists.jsx';
 import Tasks from './components/tasks.jsx';
-import Users from './components/users.jsx';
+import UsersContainer from './components/containers/users-container.jsx';
 
 injectTapEventPlugin();
 
 ReactDOM.render(
   <Router history={hashHistory}>
     <Route path="/" component={App}>
-      <IndexRoute component={Users} />
+      <IndexRoute component={UsersContainer} />
       <Route path="/lists/:userName" component={Lists} />
       <Route path="/tasks/:userName/:listSlug" component={Tasks} />
       <Route path="/admin" component={Admin} />
