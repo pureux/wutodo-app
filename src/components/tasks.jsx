@@ -18,73 +18,24 @@ import muiThemeable from 'material-ui/styles/muiThemeable';
 class Tasks extends React.Component {
   constructor(props) {
     super(props);
-
-    this.data = [
-      {
-        name: 'Get dressed',
-        description: 'Check the weather',
-        completed: true
-      },
-      {
-        name: 'Brush your teeth',
-        completed: true
-      },
-      {
-        name: 'Fix your hair',
-        completed: false
-      },
-      {
-        name: 'Pack your backpack',
-        description: 'Homework? Permission slip?',
-        completed: false
-      },
-      {
-        name: 'Pack your lunch',
-        description: 'Or eat school lunch',
-        completed: false
-      },
-      {
-        name: 'Close doors',
-        description: 'And turn off lights',
-        completed: false
-      },
-      {
-        name: 'Feed the dogs',
-        description: 'One scoop in each bowl',
-        completed: false
-      },
-      {
-        name: 'Put shoes on',
-        description: 'Gym today?',
-        completed: false
-      }
-    ];
   }
 
-  renderTasks() {
-    const items = this.data.map((task) => {
-      return (
-        <ListItem
-          key={task.name}
-          primaryText={task.name}
-          secondaryText={task.description}
-          leftCheckbox={<Checkbox defaultChecked={task.completed} />}
-        />
-      );
-    });
-
+  renderTask(task) {
     return (
-      <List>
-        <Subheader inset={true}>Complete the tasks</Subheader>
-        {items}
-      </List>
+      <ListItem
+        key={task.name}
+        primaryText={task.name}
+        secondaryText={task.description}
+        className={'checkbox' + (task.completed ? ' checked' : '')}
+        leftCheckbox={<Checkbox defaultChecked={task.completed} />}
+      />
     );
   }
 
   render() {
-    const content = this.renderTasks();
-    const { palette } = this.props.muiTheme;
-    const subtitle = '/' + this.props.params.userName + '/' + this.props.params.listSlug;
+    const { listSlug, muiTheme, tasks, userName } = this.props;
+    const { palette } = muiTheme;
+    const subtitle = '/' + userName + '/' + listSlug;
     
     return (
       <div>
@@ -92,7 +43,7 @@ class Tasks extends React.Component {
           className="appBar"
           title={<span>Tasks<small className="subtitle">{subtitle}</small></span>}
           iconElementLeft={
-            <IconButton containerElement={<Link to={'lists/' + this.props.params.userName} />}>
+            <IconButton containerElement={<Link to={'lists/' + userName} />}>
               <ArrowBack />
             </IconButton>
           }
@@ -104,7 +55,10 @@ class Tasks extends React.Component {
             />
           }
         />
-        {content}
+      <List>
+      <Subheader inset={true}>Complete the tasks</Subheader>
+        {tasks.map(this.renderTask, this)}
+      </List>
       </div>
     );
   }

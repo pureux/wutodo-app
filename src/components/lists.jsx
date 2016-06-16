@@ -19,52 +19,26 @@ import muiThemeable from 'material-ui/styles/muiThemeable';
 class Lists extends React.Component {
   constructor(props) {
     super(props);
-
-    this.data = [
-      {
-        slug: 'morning-routine',
-        name: 'Morning Routine',
-        description: 'To do every morning'
-      },
-      {
-        slug: 'bedtime-routine',
-        name: 'Bedtime Routine',
-        description: 'To do every night'
-      },
-      {
-        slug: 'weekly-chores',
-        name: 'Weekly Chores',
-        description: 'To do throughout each week'
-      }
-    ];
   }
 
-  renderLists() {
-    const items = this.data.map((list) => {
-      const path = 'tasks/' + this.props.params.userName + '/' + list.slug;
-      return (
-        <ListItem
-          key={list.slug}
-          primaryText={list.name}
-          secondaryText={list.description}
-          containerElement={<Link to={path} />}
-          leftAvatar={<Avatar icon={<Assignment />} />}
-        />
-      );
-    });
-
+  renderList(list) {
+    const path = 'tasks/' + this.props.userName + '/' + list.slug;
     return (
-      <List>
-        <Subheader inset={true}>Select a list</Subheader>
-        {items}
-      </List>
+      <ListItem
+        key={list.slug}
+        primaryText={list.name}
+        secondaryText={list.description}
+        containerElement={<Link to={path} />}
+        leftAvatar={<Avatar icon={<Assignment />} />}
+      />
     );
   }
 
   render() {
-    const content = this.renderLists();
-    const { palette } = this.props.muiTheme;
-    const subtitle = '/' + this.props.params.userName;
+    const { muiTheme, lists, userName } = this.props;
+    const { palette } = muiTheme;
+    const subtitle = '/' + userName;
+    
     return (
       <div>
         <AppBar
@@ -83,7 +57,10 @@ class Lists extends React.Component {
             />
           }
         />
-        {content}
+        <List>
+          <Subheader inset={true}>Select a list</Subheader>
+          {lists.map(this.renderList, this)}
+        </List>
       </div>
     );
   }

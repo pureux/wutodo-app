@@ -29,7 +29,8 @@ class Users extends React.Component {
   }
   
   render() {
-    const { palette } = this.props.muiTheme;
+    const { muiTheme, users } = this.props;
+    const { palette } = muiTheme;
 
     return (
       <div>
@@ -45,7 +46,7 @@ class Users extends React.Component {
         />
         <List>
           <Subheader inset={true}>Select a person</Subheader>
-          {this.props.users.map(this.renderUser)}
+          {users.map(this.renderUser, this)}
         </List>
       </div>
     );
