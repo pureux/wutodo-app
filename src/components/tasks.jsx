@@ -18,6 +18,12 @@ import muiThemeable from 'material-ui/styles/muiThemeable';
 class Tasks extends React.Component {
   constructor(props) {
     super(props);
+    this.onCheck = this.onCheck.bind(this);
+  }
+
+  onCheck(event, isInputChecked) {
+    const id = Number(event.target.getAttribute('id'));
+    this.props.onTaskCompleted(id, isInputChecked);
   }
 
   renderTask(task) {
@@ -27,7 +33,12 @@ class Tasks extends React.Component {
         primaryText={task.name}
         secondaryText={task.description}
         className={'checkbox' + (task.completed ? ' checked' : '')}
-        leftCheckbox={<Checkbox defaultChecked={task.completed} />}
+        leftCheckbox={
+          <Checkbox
+            id={task.id}
+            checked={task.completed}
+            onCheck={this.onCheck}
+          />}
       />
     );
   }
